@@ -3,5 +3,6 @@
 <%= gravatar_for @user, size: 150 %>
 
 <h4 align="center"><%= @user.username %>'s questions</h4>
-
-<%= render 'questions/question', obj: @user.questions %>
+<%= will_paginate @user_questions %>
+<%= render 'questions/question', obj: @user_questions %>
+<%= will_paginate @user_questions %>

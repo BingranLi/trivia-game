@@ -5,5 +5,6 @@
 <%= link_to "Create new question", new_question_path %>
 
 </p>
-
+<%= will_paginate %>
 <%= render 'question', obj: @questions%>
+<%= will_paginate %>

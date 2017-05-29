@@ -30,10 +30,11 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @user_questions = @user.questions.paginate(page: params[:page], per_page: 5)
   end
   
   def index
-    @users = User.order("score" + " " + "desc")
+    @users = User.order("score" + " " + "desc").paginate(page: params[:page], per_page: 10)
   end
   
   private
