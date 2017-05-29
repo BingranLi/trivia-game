@@ -6,8 +6,9 @@ class QuestionsController < ApplicationController
   
   def create
     @question = Question.new(question_params)
+    @question.user = User.first
     if @question.save
-      flash[:notice] = "Question was successfully created"
+      flash[:success] = "Question was successfully created"
       redirect_to question_path(@question)
     else
       render 'new'
