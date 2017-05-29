@@ -6,25 +6,4 @@
 
 </p>
 
-<table>
-
-<tr>
-
-<th>Question</th>
-
-</tr>
-
-<% @questions.each do |question| %>
-
-<tr>
-
-<td><%= question.problem %></td>
-<td>Created by:<%= question.user.username if question.user %></td>
-<td><%= time_ago_in_words(question.created_at) %> ago</td>
-<td><%= link_to 'Show', question_path(question) %></td>
-
-</tr>
-
-<% end %>
-
-</table>
+<%= render 'question', obj: @questions%>
