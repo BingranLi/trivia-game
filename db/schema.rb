@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170529023827) do
+ActiveRecord::Schema.define(version: 20170529025951) do
 
   create_table "questions", force: :cascade do |t|
     t.string   "problem"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170529023827) do
     t.integer  "score"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password_digest"
   end
 
 end
