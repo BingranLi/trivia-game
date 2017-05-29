@@ -19,14 +19,38 @@ class QuestionsController < ApplicationController
   
   def show
     @question = Question.find(params[:id])
+    if current_user != @question.user
+      @response = Question.new
+    end
   end
   
   def index
     @questions = Question.paginate(page: params[:page], per_page: 5)
   end
+  
+  def answer
+    @question = Question.find(params[:id])
+    @response = Question.new(question_params)
+    is_correct = compare_answer(@question.answer, @response.answer)
+    score = 0
+    if is_correct
+      score = 4
+      flash[:success] = "Correct! ths answer is #{@question.answer}"
+    else
+      score = -1
+      @question.errors.add(:answer, "Invalid");
+    end
+    user = User.find(current_user.id)
+    user.update_attribute(:score, user.score + score)
+    # redirect_to 'show'
+  end
 
   private
     def question_params
       params.require(:question).permit(:problem, :answer)
+    end
+    
+    def compare_answer(answer, origin)
+      return answer == origin
     end
 end

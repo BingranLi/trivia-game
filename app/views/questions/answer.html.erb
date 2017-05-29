@@ -1,0 +1,9 @@
+  <% if @question.errors.any? %>
+		Invalid: Answer is '<%= @question.answer %>'
+  <% end %>
+  
+  <p>
+  Question: <%= @question.problem %>
+  </p>
+
+  <%= link_to "Back to questions listing", questions_path %>

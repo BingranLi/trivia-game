@@ -16,6 +16,11 @@
 <% if logged_in? && current_user == question.user %>
 <td><%= link_to 'Show', question_path(question) %></td>
 <% end %>
+
+<% if logged_in? && current_user != question.user %>
+<td><%= link_to 'Answer', question_path(question) %></td>
+<% end %>
+
 </tr>
 
 <% end %>

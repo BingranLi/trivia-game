@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   
   get 'about', to: 'pages#about'
   resources :questions
+  post 'questions/:id/answer', to: 'questions#answer', as: :answer
   get 'signup', to: 'users#new'
   resources :users, except: [:new]
   
