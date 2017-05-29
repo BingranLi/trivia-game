@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  before_action :require_user, except: [:index]
+ # before_action :require_same_user, only: [:edit, :update, :destroy]
   
   def new
     @question = Question.new
@@ -6,7 +8,7 @@ class QuestionsController < ApplicationController
   
   def create
     @question = Question.new(question_params)
-    @question.user = User.first
+    @question.user = current_user
     if @question.save
       flash[:success] = "Question was successfully created"
       redirect_to question_path(@question)
