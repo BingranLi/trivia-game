@@ -1,0 +1,29 @@
+<h1>Listing all questions</h1>
+
+<p>
+
+<%= link_to "Create new question", new_question_path %>
+
+</p>
+
+<table>
+
+<tr>
+
+<th>Question</th>
+
+</tr>
+
+<% @questions.each do |question| %>
+
+<tr>
+
+<td><%= question.problem %></td>
+
+<td><%= link_to 'Show', question_path(question) %></td>
+
+</tr>
+
+<% end %>
+
+</table>
