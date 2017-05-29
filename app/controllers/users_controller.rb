@@ -32,6 +32,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
+  def index
+    @users = User.order("score" + " " + "desc")
+  end
+  
   private
     def user_params
       params.require(:user).permit(:username, :email, :password)

@@ -1,0 +1,10 @@
+<h1 align="center">Score Board</h1>
+
+<% @users.each do |user| %>
+<ul>
+  <% if user.score %>
+    <%= user.username%>
+    <%= user.score%>
+  <% end %>
+</ul>
+<% end %>
