@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
+  before_action :set_question, only: [:show, :destroy, :answer]
   before_action :require_user, except: [:index]
- # before_action :require_same_user, only: [:edit, :update, :destroy]
+  before_action :require_same_user, only: [:destroy]
   
   def new
     @question = Question.new
@@ -17,19 +18,23 @@ class QuestionsController < ApplicationController
     end
   end
   
+  def index
+    @questions = Question.paginate(page: params[:page], per_page: 5)
+  end
+  
+  def destroy
+    @question.destroy
+    flash[:success] = "Question was successfully deleted"
+    redirect_to questions_path
+  end
+  
   def show
-    @question = Question.find(params[:id])
     if current_user != @question.user
       @response = Question.new
     end
   end
   
-  def index
-    @questions = Question.paginate(page: params[:page], per_page: 5)
-  end
-  
   def answer
-    @question = Question.find(params[:id])
     @response = Question.new(question_params)
     is_correct = compare_answer(@question.answer, @response.answer)
     score = 0
@@ -41,8 +46,11 @@ class QuestionsController < ApplicationController
       @question.errors.add(:answer, "Invalid");
     end
     user = User.find(current_user.id)
-    user.update_attribute(:score, user.score + score)
-    # redirect_to 'show'
+    if user.score == nil
+      user.update_attribute(:score, score)
+    else
+      user.update_attribute(:score, user.score + score)
+    end
   end
 
   private
@@ -52,5 +60,16 @@ class QuestionsController < ApplicationController
     
     def compare_answer(answer, origin)
       return answer == origin
+    end
+
+    def set_question
+      @question = Question.find(params[:id])
+    end
+
+    def require_same_user
+      if current_user != @question.user
+        flash[:danger] = "You can only delete your own question"
+        redirect_to root_path
+      end
     end
 end

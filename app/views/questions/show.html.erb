@@ -2,4 +2,5 @@
 
 <%= render 'form'%>
 
+<%= link_to "Delete question", question_path(@question), method: :delete, data: {confirm: "Are you sure?"} %>
 <%= link_to "Back to questions listing", questions_path %>
