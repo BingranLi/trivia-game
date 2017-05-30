@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post 'questions/:id/answer', to: 'questions#answer', as: :answer
   get 'signup', to: 'users#new'
   resources :users, except: [:new]
+  resources :categories, except: [:destroy]
   
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
