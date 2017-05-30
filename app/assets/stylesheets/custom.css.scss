@@ -12,7 +12,7 @@
   }
   
   #logo:hover {
-    color: #fff;
+    color: 000000;
     text-decoration: none;
   }
   
@@ -23,11 +23,11 @@
   .jumbotron {
     background-image: asset-url('new_cover_page.png');
     background-size: cover;
-    height: 550px;
+    height: 250px;
   }
   
   .jumbotron h1 {
-    color: #fff;
+    color: 000000;
     text-align: center;
     margin-bottom: 30px;
     letter-spacing: -1px;
@@ -35,8 +35,9 @@
   }
   
   .btn-xlarge {
+    color: 000000;
     font-size: 1.7em;
-    background-color: black;
+    background-color: #4d79ff;
   }
   
   footer {

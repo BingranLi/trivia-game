@@ -4,7 +4,7 @@
       <div class="article-title">
         <%= question.problem %>
       </div>
-    Created by:<%= question.user.username if question.user %>
+    Created by: <%= question.user.username if question.user %>,
     <%= time_ago_in_words(question.created_at) %> ago
     <div class="article-actions">
       <% if logged_in? && current_user == question.user %>

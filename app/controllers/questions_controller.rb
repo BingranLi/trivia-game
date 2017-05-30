@@ -59,7 +59,7 @@ class QuestionsController < ApplicationController
     end
     
     def compare_answer(answer, origin)
-      return answer == origin
+      return answer.downcase == origin.downcase
     end
 
     def set_question
