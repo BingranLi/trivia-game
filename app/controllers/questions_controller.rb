@@ -55,6 +55,10 @@ class QuestionsController < ApplicationController
 
   private
     def question_params
+      params.require(:question).permit(:problem, :answer, category_ids: [])
+    end
+    
+    def response_params
       params.require(:question).permit(:problem, :answer)
     end
     

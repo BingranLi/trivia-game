@@ -6,6 +6,9 @@
       </div>
     Created by : <%= question.user.username if question.user %>, 
     <%= time_ago_in_words(question.created_at) %> ago
+    <% if question.categories.any? %>
+    <p>Categories: <%= render question.categories %></p>
+    <% end %>
     <div class="article-actions">
       <% if logged_in? && (current_user == question.user || current_user.admin?)%>
       <%= link_to 'Show', question_path(question), class: "btn btn-xs btn-primary" %>
