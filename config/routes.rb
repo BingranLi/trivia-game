@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   
   get 'about', to: 'pages#about'
-  resources :questions
+  resources :questions, except: [:edit]
   post 'questions/:id/answer', to: 'questions#answer', as: :answer
   get 'signup', to: 'users#new'
   resources :users, except: [:new]
