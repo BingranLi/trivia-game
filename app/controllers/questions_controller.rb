@@ -40,10 +40,10 @@ class QuestionsController < ApplicationController
     score = 0
     if is_correct
       score = 4
-      flash[:success] = "Correct! ths answer is #{@question.answer}"
+      flash.now[:success] = "Correct! ths answer is #{@question.answer}"
     else
       score = -1
-      @question.errors.add(:answer, "Invalid");
+      flash.now[:danger] = "Wrong! ths answer is #{@question.answer}"
     end
     user = User.find(current_user.id)
     if user.score == nil

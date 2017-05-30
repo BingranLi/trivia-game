@@ -12,21 +12,6 @@
   <div class="container">
   <%= yield %>
   </div>
-  
-  <ul>
-  <li><%= link_to "TriviaGame", root_path%></li>
-  <li><%= link_to "Questions", questions_path %></li>
-  <li><%= link_to "Scores", users_path %></li>
-  <% if logged_in? %>
-  <li><%= link_to "New Question", new_question_path %></li>
-  <li><%= link_to 'Log out', logout_path, method: :delete %><li>
-  <li><%= link_to "View your profile", user_path(current_user) %></li>
-  <% else %>
-  <li><%= link_to 'Log in', login_path %></li>
-  <li><%= link_to 'Sign up', signup_path %></li>
-  <% end %>
-  </ul>
-  
   <%= render 'layouts/footer' %>
 </body>
 </html>

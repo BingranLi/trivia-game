@@ -2,8 +2,6 @@
 		Invalid: Answer is '<%= @question.answer %>'
   <% end %>
   
-  <p>
-  Question: <%= @question.problem %>
-  </p>
+<h2 align="center">Question: <%= @question.problem %></h2>
 
-  <%= link_to "Back to questions listing", questions_path %>
+  <%= link_to "Back to questions list", questions_path %>
