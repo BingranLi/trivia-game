@@ -17,7 +17,7 @@ Feature
 4. support admin user and only admin can create category
 5. add unit test for data model
 
-Deployed at Url: trivia-game-ryan.herokuapp.com
+Deployed at Url: https://trivia-game-ryan.herokuapp.com
 
 Instructions to run:
 
