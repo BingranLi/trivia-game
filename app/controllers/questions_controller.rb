@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :destroy, :answer]
-  before_action :require_user, except: [:index]
+  before_action :require_user
   before_action :require_same_user, only: [:destroy]
   
   def new
