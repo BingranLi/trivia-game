@@ -67,9 +67,10 @@ class QuestionsController < ApplicationController
     end
 
     def require_same_user
-      if current_user != @question.user
+      if current_user != @question.user and !current_user.admin?
         flash[:danger] = "You can only delete your own question"
         redirect_to root_path
       end
     end
+    
 end

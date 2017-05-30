@@ -4,16 +4,16 @@
       <div class="article-title">
         <%= question.problem %>
       </div>
-    Created by: <%= question.user.username if question.user %>,
+    Created by : <%= question.user.username if question.user %>, 
     <%= time_ago_in_words(question.created_at) %> ago
     <div class="article-actions">
-      <% if logged_in? && current_user == question.user %>
+      <% if logged_in? && (current_user == question.user || current_user.admin?)%>
       <%= link_to 'Show', question_path(question), class: "btn btn-xs btn-primary" %>
       <%= link_to "Delete", question_path(question), method: :delete, 
       data: { confirm: "Are you sure you want to delete the question?"},class: "btn btn-xs btn-danger" %>
       <% end %>
       
-      <% if logged_in? && current_user != question.user %>
+      <% if logged_in? && current_user != question.user && !current_user.admin? %>
       <%= link_to 'Answer', question_path(question), class: "btn btn-xs btn-success" %>
       <% end %>
     </div>

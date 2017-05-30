@@ -1,15 +1,15 @@
 
 <h2 align="center">Question: <%= @question.problem %></h2>
-<% if @question.user == current_user%>
+<% if @question.user == current_user || current_user.admin?%>
   <div class="row">
   <div class="well col-xs-8 col-xs-offset-2">
     <h4 class="center description">Answer: <%= @question.answer %></h4>
   </div>
   <div class="col-xs-4 col-xs-offset-4">
-  <%= link_to "Delete question", question_path(@question), method: :delete, data: {confirm: "Are you sure?"} %>
+    [ <%= link_to "Delete question", question_path(@question), method: :delete, data: {confirm: "Are you sure?"} %> ]
   </div>
   <div class="col-xs-4 col-xs-offset-4">
-    <%= link_to "Back to questions list", questions_path %>
+    [ <%= link_to "Back to questions list", questions_path %> ]
   </div>
   </dir>
 <% else %>
